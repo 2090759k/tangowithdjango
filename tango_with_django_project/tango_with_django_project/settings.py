@@ -97,3 +97,6 @@ STATICFILES_DIRS = (
     STATIC_PATH,
 )
 STATIC_URL = '/static/'
+
+
+LOGIN_URL = '/rango/login/'
