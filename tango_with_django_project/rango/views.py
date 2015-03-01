@@ -138,6 +138,8 @@ def add_page(request, category_name_slug):
 
 
 
+
+
 def register(request):
 
     # A boolean value for telling the template whether the registration was successful.
