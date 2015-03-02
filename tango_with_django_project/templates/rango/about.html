@@ -4,11 +4,15 @@
 
 {% block body_block %}
 
+     <div class="page-header">
                 <h1>About me.</h1>
-		<strong>{{ boldmessage}}</strong><br/>
-                <a href="/rango/">Index</a><br />
-                <img src="{% static "images/me.jpg" %}" alt="Photo of me" /><br /><!-- New line -->
-                You have visited this site {{ visited }} times
+            </div>
+            <div>
+            <strong>{{ boldmessage}}</strong><br/>
+            <a href="/rango/">Index</a><br />
+            <img src="{% static "images/me.jpg" %}" alt="Photo of me" /><br /><!-- New line -->
+            You have visited this site {{ visited }} times
+            </div>
 {%endblock%}
 
 
