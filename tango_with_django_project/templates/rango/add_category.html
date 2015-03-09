@@ -1,30 +1,31 @@
 {% extends 'rango/base.html' %}
 
+{% load staticfiles %}
+
 
 {% block body_block %}
-<form role="form"  method="post" action=".">
-                {% csrf_token %}
-
-<h2 class="form-signin-heading">Sign Up Here</h2>
-
-<div class="form-group" >
- <p class="required"> <label for="id_username">Username:</label>
-     <input class="form-control"  id="id_username" maxlength="30" name="username" type="text"  placeholder="Enter username"/></p>
-</div>
- <div class="form-group">
-    <p class="required"><label for="id_email">E-mail:</label>
-        <input class="form-control" id="id_email" name="email" type="email" placeholder="Enter email" /></p>
- </div>
-<div class="form-group">
-    <p class="required"><label for="id_password1">Password:</label>
-        <input class="form-control" id="id_password1" name="password1" type="password" placeholder="Enter password" /></p>
-</div>
-<div class="form-group">
-    <p class="required"><label for="id_password2">Password (again):</label>
- <input class="form-control" id="id_password2" name="password2" type="password" placeholder="Enter password again" /></p>
-</div>
-
-<button type="submit" class="btn btn-default">Submit</button>
-
-        </form>
+		<div class="page-header">
+			<h1>Add a Category</h1>
+		</div>
+		<div>
+		
+                <form role="form"  id="page_form" method="post" action="/rango/category/{{category.slug}}/add_page/">
+                <h2 class="form-signin-heading">Add a Category</h2>
+		
+			{% csrf_token %}
+			{% for hidden in form.hidden_fields %}
+				{{ hidden }}
+			{% endfor %}
+			
+			{% for field in form.visible_fields %}
+				{{ field.errors }}
+				{{ field.help_text }}
+				{{ field }}
+			{% endfor %}
+			
+			<button class="btn btn-primary" type="submit" name="submit">Add Category</button>
+		</form>
+		<br />
+		</div>
+		
 {% endblock %}
