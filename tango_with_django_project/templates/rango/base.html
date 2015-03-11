@@ -41,14 +41,15 @@
                     {% if user.is_authenticated %}
                         <li><a href="{% url 'restricted' %}">Restricted Page</a></li>
                         <li><a href="{% url 'auth_logout' %}?next=/rango/">Logout</a></li>
-                        <li><a href="{% url 'add_category' %}">Add a New Category</a></li>
-                        <li><a href="{% url 'auth_password_change' %}">Change Password</a></li>
+                        
+                        
+                        <li><a href="{% url 'edit_profile' %}">Profile</a></li>
                     {% else %}
                         <li><a href="{% url 'registration_register' %}">Register Here</a></li>
                         <li><a href="{% url 'auth_login' %}">Login</a></li>
                     {% endif %}
                         <li><a href="{% url 'about' %}">About</a></li>
-                        <li><a href="{% url 'search' %}">Search</a></li>
+                        
 
               </ul>
         </div>
@@ -60,6 +61,10 @@
         <div class="col-sm-3 col-md-2 sidebar">
                 {% block side_block %}
                 {% get_category_list category %}
+                {% if user.is_authenticated %}
+                    <br/>
+                    <ul><i><a href="{% url 'add_category' %}">Add a New Category</a></i></ul>
+                {% endif %}
                 {% endblock %}
         </div>
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">

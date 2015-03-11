@@ -1,0 +1,31 @@
+{% extends 'rango/base.html' %}
+
+{% load staticfiles %}
+
+{% block title %}Profile{% endblock %}
+
+{% block body_block %}
+	<div class="page-header">
+        	<h1>{{ requested_user }}</h1>
+	</div>
+	<div>
+        <ul>Username: {{ requested_user.username }}</ul>
+	<ul>E-mail: {{ requested_user.email }}</ul>
+
+	{% if profile_exists = False %}
+		<ul><b>This user has not provided a profile yet.</b></ul>
+        {% else %}
+                <ul>Website: <a href="{{ profile.website }}">{{ profile.website }}</a></ul>
+                <ul><img width="300" src="{{MEDIA_URL}}{{ profile.picture }}" alt="{{requested_user}}'s profile picture" /></ul>
+        {% endif %}
+        <br/>
+        {% if user = requested_user %}
+            <form role="form" action="{% url 'edit_profile' %}">
+                <ul><button class="btn btn-primary">Edit Profile</button></ul>
+            </form>
+        {% endif %}
+
+	
+	</div>
+   
+{% endblock %}

@@ -1,0 +1,33 @@
+{% extends 'rango/base.html' %}
+
+{% load staticfiles %}
+
+{% block title %}Edit Profile{% endblock %}
+
+{% block body_block %}
+	<div class="page-header">
+        	<h1>{{ user.username }}</h1>
+	</div>
+	<div>
+        <form id="user_form" method="post" action="{% url 'edit_profile' %}"
+                enctype="multipart/form-data">
+
+            {% csrf_token %}
+	    <ul><b>Email:</b> {{ user_form.email }}</ul>
+            <ul>{{ profile_form.as_p }}</ul>
+            {% if profile_exists = True %}
+                <ul><img width="300" src="{{MEDIA_URL}}{{ profile.picture }}" alt="{{user.username}}'s profile picture" /></ul>
+            {% endif %}
+            
+
+            <ul><button class="btn btn-primary" type="submit" name="submit" value="Update">Submit Changes & Update Profile Now</button></ul>
+        </form>
+        <form role="form" action="{% url 'auth_password_change' %}">
+            <ul><button class="btn btn-primary">Change Password</button></ul>
+        </form>
+        
+
+	
+	</div>
+   
+{% endblock %}

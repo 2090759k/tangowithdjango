@@ -1,0 +1,32 @@
+{% extends 'rango/base.html' %}
+
+{% load staticfiles %}
+
+{% block title %}Register Profile{% endblock %}
+
+{% block body_block %}
+
+    <div class="page-header">
+        <h1>Create your profile</h1>
+    </div>
+
+    <div class="row">
+
+        <div class="panel panel-primary">
+            <br/>
+
+            <form role="form" id="profile_form" method="post" action="{% url 'add_profile' %}"
+                enctype="multipart/form-data">
+                {% csrf_token %}
+
+                <ul>{{ profile_form.as_p }}</ul>
+                <br/>
+                <ul><button class="btn btn-primary" type="submit" name="submit">Register Profile</button></ul>
+                <br/>
+            </form>
+        
+
+        </div>
+    </div>
+
+{% endblock %}

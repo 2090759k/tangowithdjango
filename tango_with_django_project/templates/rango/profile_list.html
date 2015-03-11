@@ -1,0 +1,25 @@
+{% extends 'rango/base.html' %}
+
+{% load staticfiles %}
+
+{% block title %}Profile{% endblock %}
+
+{% block body_block %}
+        <div class="page-header">
+	        <h1>User profiles</h1>
+	</div>
+	<div>
+            {% if users %}
+            <ul>
+                {% for loopuser in users %}
+                <li><a href="{% url 'profile' loopuser.username %}">{{ loopuser.username }} 
+                    {% if user = loopuser %}<i>[YOU]</i>{% endif %}</a></li>
+                {% endfor %}
+            </ul>
+            {% else %}
+                <strong>No users currently in the system.</strong>
+            {% endif %}
+	</div>
+
+   
+{% endblock %}
